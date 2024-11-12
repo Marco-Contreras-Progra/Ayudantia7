@@ -3,11 +3,11 @@ package com.example.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
-import Datos.GestorDatos;
+import com.example.Datos.GestorDatos;
 
 public class Automotora {
     private List<Vehiculo> vehiculos;
-	private GestorDatos _gestorDatos;
+	private GestorDatos gestorDatos;
 
 	    public Automotora() {
         this.vehiculos = new ArrayList<>();
@@ -18,7 +18,7 @@ public class Automotora {
         System.out.println("Vehículo agregado: " + vehiculo.getMarca() + " " + vehiculo.getModelo());
     }
 
-	public Vehiculo listarVehiculos() {
+	public void listarVehiculos() {
 		if (vehiculos.isEmpty()) {
 			System.out.println("No hay vehiculos registrados");
 		} else {
@@ -40,14 +40,19 @@ public class Automotora {
 	
 	}
 
-	public void cargarVehiculosDesdeJSON(String archivo) {
-		GestorDeDatos gestor = new GestorDeDatos();
-        List<Vehiculo> vehiculosCargados = gestor.leerVehiculosDesdeJSON(archivo);
-        vehiculos.addAll(vehiculosCargados);
-	}
+    public void cargarVehiculosDesdeJSON(String archivo) {
+        List<Vehiculo> vehiculosCargados = gestorDatos.leerVehiculosDelJSON(archivo);
+        if (vehiculosCargados != null) {
+            vehiculos.addAll(vehiculosCargados);
+            System.out.println("Vehículos cargados desde el archivo: " + archivo);
+        } else {
+            System.out.println("No se pudieron cargar los vehículos desde el archivo.");
+        }
+    }
 
 	public void guardarVehiculosEnJSON(String archivo) {
-		GestorDeDatos gestor = new GestorDeDatos();
-        gestor.guardarVehiculosEnJSON(vehiculos, archivo);
-	}
+        gestorDatos.guardarVehiculosEnJSON(vehiculos, archivo);
+        System.out.println("Vehículos guardados en el archivo: " + archivo);
+    }
+
 }

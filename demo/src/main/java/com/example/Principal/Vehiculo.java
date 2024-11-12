@@ -25,7 +25,7 @@ public class Vehiculo {
 	public int getAño(){
 		return año;
 	}
-	public Double getprecio(){
+	public Double getPrecio(){
 		return precio;
 	}
 	public void setMarca(String marca) {
