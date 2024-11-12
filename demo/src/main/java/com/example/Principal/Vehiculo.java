@@ -16,16 +16,16 @@ public class Vehiculo {
         this.precio = precio;
     }
 
-	public String getMarca(String marca){
+	public String getMarca(){
 		return marca;
 	}
-	public String getModelo(String modelo){
+	public String getModelo(){
 		return modelo;
 	}
-	public int getAño(int año){
+	public int getAño(){
 		return año;
 	}
-	public Double getprecio(Double precio){
+	public Double getprecio(){
 		return precio;
 	}
 	public void setMarca(String marca) {
